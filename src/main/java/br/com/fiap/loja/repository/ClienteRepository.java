@@ -1,4 +1,8 @@
 package br.com.fiap.loja.repository;
 
-public interface ClienteRepository /*extends JpaRepository<Cliente, Long>*/ {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.fiap.loja.models.Cliente;
+
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 }

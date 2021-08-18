@@ -1,4 +1,8 @@
 package br.com.fiap.loja.repository;
 
-public interface PedidosItensRepository /*extends JpaRepository<PedidosItens, Long>*/ {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.fiap.loja.models.PedidosItens;
+
+public interface PedidosItensRepository extends JpaRepository<PedidosItens, Long> {
 }
