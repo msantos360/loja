@@ -1,12 +1,18 @@
 package br.com.fiap.loja.models;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
+@Table(name = "cliente", schema = "loja")
 public class Cliente {
 
     @Id
@@ -14,63 +20,65 @@ public class Cliente {
     private Long id;
     @Column(nullable = false, unique = true)
     private String cpf;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nome;
-    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @OneToMany(mappedBy = "enderecos")
+    @OneToMany(mappedBy = "cliente")
     private List<Enderecos> enderecos;
-    @OneToMany(mappedBy = "pedidos")
+    @OneToMany(mappedBy = "cliente")
     private List<Pedidos> pedidos;
+    
+    public Cliente() {}
 
-    public List<Pedidos> getPedidos() {
-        return pedidos;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setPedidos(List<Pedidos> pedidos) {
-        this.pedidos = pedidos;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Cliente(){}
+	public String getCpf() {
+		return cpf;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public List<Enderecos> getEnderecos() {
+		return enderecos;
+	}
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
+	public void setEnderecos(List<Enderecos> enderecos) {
+		this.enderecos = enderecos;
+	}
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+	public List<Pedidos> getPedidos() {
+		return pedidos;
+	}
 
-    public List<Enderecos> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<Enderecos> enderecos) {
-        this.enderecos = enderecos;
-    }
+	public void setPedidos(List<Pedidos> pedidos) {
+		this.pedidos = pedidos;
+	}
+    
+    
 }
