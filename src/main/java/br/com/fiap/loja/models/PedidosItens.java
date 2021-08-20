@@ -1,12 +1,6 @@
 package br.com.fiap.loja.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "pedidosItens", schema = "loja")
@@ -21,6 +15,11 @@ public class PedidosItens {
     private Long quantidade;
     @Column(nullable = false)
     private Double valor;
+    @Column(nullable = false)
+    private Long produto_id;
+
+    @ManyToOne
+    private Produto Produto;
     
     @ManyToOne
     private Pedidos pedidos;
