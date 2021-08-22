@@ -15,7 +15,7 @@ public class Pedidos {
 
 	private LocalDate dataPedido = LocalDate.now();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedidos")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedidos", cascade = CascadeType.ALL)
 	private List<PedidosItens> pedidosItens;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -22,7 +22,7 @@ public class Cliente {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Enderecos> enderecos;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
