@@ -1,5 +1,7 @@
 package br.com.fiap.loja.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,7 +24,9 @@ public class Enderecos {
 	@Column(nullable = true)
 	private String complemento;
 
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	public Enderecos() {

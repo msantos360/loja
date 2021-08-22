@@ -21,7 +21,8 @@ public class PedidosItens {
     @ManyToOne
     private Produto Produto;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedidos_id")
     private Pedidos pedidos;
     
     public PedidosItens() {}
