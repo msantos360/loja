@@ -42,10 +42,10 @@ public class ClienteService {
     }
 
     public void insertCliente(ClienteDTO clienteDTO){
-        //List<Enderecos> enderecosList = clienteDTO.getEnderecos();
+        List<Enderecos> enderecosList = clienteDTO.getEnderecos();
         Cliente clienteAux = dtoToModel(clienteDTO);
-        //enderecosList.forEach(e -> e.setCliente(clienteAux));
-       // enderecosRepository.saveAll(enderecosList);
+        enderecosList.forEach(e -> e.setCliente(clienteAux));
+        enderecosRepository.saveAll(enderecosList);
         clienteRepository.save(clienteAux);
     }
 
