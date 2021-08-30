@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "produto", schema = "loja")
 public class Produto {
 
     @Id
@@ -48,7 +50,7 @@ public class Produto {
         this.dataCriacao = dataCriacao;
     }
 
-    @OneToMany(mappedBy = "produto")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
     private List<PedidosItens> PedidoItens;
 
     public Produto() {
