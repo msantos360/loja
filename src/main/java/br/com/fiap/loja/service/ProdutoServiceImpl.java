@@ -4,10 +4,12 @@ import br.com.fiap.loja.models.Dtos.ProdutoAddOuUpdateDTO;
 import br.com.fiap.loja.models.Dtos.ProdutoDto;
 import br.com.fiap.loja.models.Produto;
 import br.com.fiap.loja.repository.ProdutoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ProdutoServiceImpl implements ProdutoService {
 
     private final ProdutoRepository produtoRepository;

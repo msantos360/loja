@@ -15,16 +15,24 @@ public class PedidosItens {
     private Long quantidade;
     @Column(nullable = false)
     private Double valor;
-    @Column(nullable = false)
-    private Long produto_id;
 
-    @ManyToOne
-    private Produto Produto;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedidos_id")
     private Pedidos pedidos;
-    
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     public PedidosItens() {}
 
     public String getNome() {
