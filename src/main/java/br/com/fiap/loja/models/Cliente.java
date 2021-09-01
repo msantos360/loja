@@ -1,16 +1,16 @@
 package br.com.fiap.loja.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cliente", schema = "loja")
-public class Cliente {
+public class Cliente implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Cliente {
     private List<Enderecos> enderecos;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
-    private List<Pedidos> pedidos;
+    private List<Pedido> pedidos;
     
     public Cliente() {}
 
@@ -70,11 +70,11 @@ public class Cliente {
 		this.enderecos = enderecos;
 	}
 
-	public List<Pedidos> getPedidos() {
+	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(List<Pedidos> pedidos) {
+	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
     
