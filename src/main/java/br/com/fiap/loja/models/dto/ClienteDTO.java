@@ -1,8 +1,7 @@
 package br.com.fiap.loja.models.dto;
 
-import br.com.fiap.loja.models.Cliente;
 import br.com.fiap.loja.models.Enderecos;
-import br.com.fiap.loja.models.Pedidos;
+import br.com.fiap.loja.models.Pedido;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +13,7 @@ public class ClienteDTO {
     private String nome;
     private LocalDate dataNascimento;
     private List<Enderecos> enderecos;
-    private List<Pedidos> pedidos;
+    private List<Pedido> pedidos;
 
     public Long getId() {
         return id;
@@ -56,11 +55,11 @@ public class ClienteDTO {
         this.enderecos = enderecos;
     }
 
-    public List<Pedidos> getPedidos() {
+    public List<Pedido> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(List<Pedidos> pedidos) {
+    public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 }

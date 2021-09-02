@@ -51,7 +51,7 @@ public class Produto {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
-    private List<PedidosItens> PedidoItens;
+    private List<br.com.fiap.loja.models.PedidoItens> PedidoItens;
 
     public Produto() {
     }

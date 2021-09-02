@@ -3,10 +3,13 @@ package br.com.fiap.loja.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "enderecos", schema = "loja")
-public class Enderecos {
+public class Enderecos implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +29,7 @@ public class Enderecos {
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "cliente_id", referencedColumnName = "id")
 	private Cliente cliente;
 
 	public Enderecos() {

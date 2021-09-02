@@ -1,10 +1,15 @@
 package br.com.fiap.loja.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "pedidosItens", schema = "loja")
-public class PedidosItens {
+@Table(name = "pedidoItens", schema = "loja")
+public class PedidoItens implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +21,12 @@ public class PedidosItens {
     @Column(nullable = false)
     private Double valor;
 
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedidos_id")
-    private Pedidos pedidos;
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id")
     private Produto produto;
@@ -33,7 +39,7 @@ public class PedidosItens {
         this.produto = produto;
     }
 
-    public PedidosItens() {}
+    public PedidoItens() {}
 
     public String getNome() {
 		return nome;
@@ -68,11 +74,11 @@ public class PedidosItens {
         this.id = id;
     }
 
-    public Pedidos getPedidos() {
-        return pedidos;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setPedidos(Pedidos pedidos) {
-        this.pedidos = pedidos;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

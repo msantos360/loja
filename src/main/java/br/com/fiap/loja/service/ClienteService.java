@@ -27,6 +27,7 @@ public class ClienteService {
         return modelToDTO(cliente);
     }
 
+
     public List<ClienteDTO> getAllClientes() {
         List<Cliente> listaClientes = new ArrayList<>();
         List<ClienteDTO> clienteDTOList = new ArrayList<>();
