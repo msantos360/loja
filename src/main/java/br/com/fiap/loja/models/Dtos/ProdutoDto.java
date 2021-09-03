@@ -2,9 +2,11 @@ package br.com.fiap.loja.models.Dtos;
 
 import br.com.fiap.loja.models.Produto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ProdutoDto {
+public class ProdutoDto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public Long id;
     public String nome;

@@ -8,8 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cliente", schema = "loja")
-public class Cliente implements Serializable{
-
+public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @Id
@@ -22,7 +21,7 @@ public class Cliente implements Serializable{
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Enderecos> enderecos;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")

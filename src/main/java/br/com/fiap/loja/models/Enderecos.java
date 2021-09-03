@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "enderecos", schema = "loja")
 public class Enderecos implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,7 +27,7 @@ public class Enderecos implements Serializable {
 	private String complemento;
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "cliente_id", referencedColumnName = "id")
 	private Cliente cliente;
 
