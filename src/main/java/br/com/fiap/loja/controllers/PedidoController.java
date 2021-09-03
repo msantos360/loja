@@ -1,7 +1,7 @@
 package br.com.fiap.loja.controllers;
 
-import br.com.fiap.loja.models.Dtos.PedidoAddDTO;
-import br.com.fiap.loja.models.Dtos.PedidoDto;
+import br.com.fiap.loja.models.dtos.PedidoAddDTO;
+import br.com.fiap.loja.models.dtos.PedidoDto;
 import br.com.fiap.loja.service.ClienteService;
 import br.com.fiap.loja.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;

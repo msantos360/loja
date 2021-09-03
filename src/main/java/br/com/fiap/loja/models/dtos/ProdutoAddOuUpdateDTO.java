@@ -1,4 +1,4 @@
-package br.com.fiap.loja.models.Dtos;
+package br.com.fiap.loja.models.dtos;
 
 import java.io.Serializable;
 

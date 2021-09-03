@@ -1,5 +1,7 @@
 package br.com.fiap.loja.models;
 
+import org.hibernate.annotations.Proxy;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,10 +23,10 @@ public class Cliente implements Serializable {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Enderecos> enderecos;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Pedido> pedidos;
     
     public Cliente() {}

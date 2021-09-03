@@ -1,4 +1,4 @@
-package br.com.fiap.loja.models.dto;
+package br.com.fiap.loja.models.dtos;
 
 import br.com.fiap.loja.models.Enderecos;
 import br.com.fiap.loja.models.Pedido;
@@ -15,6 +15,20 @@ public class ClienteDTO implements Serializable {
     private LocalDate dataNascimento;
     private List<Enderecos> enderecos;
     private List<Pedido> pedidos;
+
+
+    public ClienteDTO(Long id, String cpf, String nome, LocalDate dataNascimento, List<Enderecos> enderecos, List<Pedido> pedidos) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.enderecos = enderecos;
+        this.pedidos = pedidos;
+    }
+
+    public ClienteDTO() {
+
+    }
 
     public Long getId() {
         return id;

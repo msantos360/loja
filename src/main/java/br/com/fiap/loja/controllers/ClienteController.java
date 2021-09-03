@@ -1,6 +1,6 @@
 package br.com.fiap.loja.controllers;
 
-import br.com.fiap.loja.models.dto.ClienteDTO;
+import br.com.fiap.loja.models.dtos.ClienteDTO;
 import br.com.fiap.loja.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
