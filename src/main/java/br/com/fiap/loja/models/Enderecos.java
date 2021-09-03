@@ -27,7 +27,7 @@ public class Enderecos implements Serializable {
 	private String complemento;
 
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id", referencedColumnName = "id")
 	private Cliente cliente;
 

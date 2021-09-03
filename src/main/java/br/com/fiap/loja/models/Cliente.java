@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Enderecos> enderecos;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
