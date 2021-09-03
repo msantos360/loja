@@ -1,9 +1,6 @@
 package br.com.fiap.loja.models;
 
-import br.com.fiap.loja.models.Dtos.PedidoAddDTO;
-import br.com.fiap.loja.models.Dtos.ProdutoAddOuUpdateDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -28,7 +25,7 @@ public class Pedido implements Serializable {
 	private List<PedidoItens> pedidoItens;
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cliente_id",  referencedColumnName = "id")
 	private Cliente cliente;
 

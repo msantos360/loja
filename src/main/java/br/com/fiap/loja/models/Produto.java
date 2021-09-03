@@ -1,6 +1,6 @@
 package br.com.fiap.loja.models;
 
-import br.com.fiap.loja.models.Dtos.ProdutoAddOuUpdateDTO;
+import br.com.fiap.loja.models.dtos.ProdutoAddOuUpdateDTO;
 
 import javax.persistence.*;
 import java.time.LocalDate;

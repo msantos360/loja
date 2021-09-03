@@ -3,7 +3,7 @@ package br.com.fiap.loja.service;
 
 import br.com.fiap.loja.models.Cliente;
 import br.com.fiap.loja.models.Enderecos;
-import br.com.fiap.loja.models.dto.ClienteDTO;
+import br.com.fiap.loja.models.dtos.ClienteDTO;
 import br.com.fiap.loja.repository.ClienteRepository;
 import br.com.fiap.loja.repository.EnderecosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,9 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -27,14 +27,16 @@ public class ClienteService {
     private EnderecosRepository enderecosRepository;
 
     @Cacheable(value= "getClienteById", key= "#id")
+    @Transactional
     public ClienteDTO getClienteById(Long id){
         Cliente cliente = clienteRepository.getById(id);
         return modelToDTO(cliente);
     }
 
     @Cacheable(value= "getAllClientes", unless= "#result.size() == 0")
+    @Transactional
     public List<ClienteDTO> getAllClientes() {
-        List<Cliente> listaClientes = new ArrayList<>();
+        List<Cliente> listaClientes;
         List<ClienteDTO> clienteDTOList = new ArrayList<>();
         listaClientes = clienteRepository.findAll();
         for (Cliente cliente: listaClientes){
@@ -42,7 +44,6 @@ public class ClienteService {
         }
         return clienteDTOList;
     }
-
 
     @Caching(
             evict= {
@@ -78,7 +79,7 @@ public class ClienteService {
                     c.setEnderecos(clienteDTO.getEnderecos());
                     c.setPedidos(clienteDTO.getPedidos());
                     c.setNome(clienteDTO.getNome());
-                    List<Enderecos> enderecosList = new ArrayList<>();
+                    List<Enderecos> enderecosList;
                     enderecosList = c.getEnderecos();
                     enderecosList.forEach(e -> e.setCliente(c));
                     enderecosRepository.saveAll(enderecosList);

@@ -1,7 +1,7 @@
 package br.com.fiap.loja.controllers;
 
-import br.com.fiap.loja.models.Dtos.ProdutoAddOuUpdateDTO;
-import br.com.fiap.loja.models.Dtos.ProdutoDto;
+import br.com.fiap.loja.models.dtos.ProdutoAddOuUpdateDTO;
+import br.com.fiap.loja.models.dtos.ProdutoDto;
 import br.com.fiap.loja.service.ProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

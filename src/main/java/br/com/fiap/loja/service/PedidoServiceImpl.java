@@ -1,8 +1,8 @@
 package br.com.fiap.loja.service;
 
 import br.com.fiap.loja.models.Cliente;
-import br.com.fiap.loja.models.Dtos.PedidoAddDTO;
-import br.com.fiap.loja.models.Dtos.PedidoDto;
+import br.com.fiap.loja.models.dtos.PedidoAddDTO;
+import br.com.fiap.loja.models.dtos.PedidoDto;
 import br.com.fiap.loja.models.Pedido;
 import br.com.fiap.loja.models.PedidoItens;
 import br.com.fiap.loja.repository.ClienteRepository;
