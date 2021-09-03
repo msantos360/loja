@@ -3,10 +3,11 @@ package br.com.fiap.loja.models.dto;
 import br.com.fiap.loja.models.Enderecos;
 import br.com.fiap.loja.models.Pedido;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ClienteDTO {
+public class ClienteDTO implements Serializable {
 
     private Long id;
     private String cpf;

@@ -7,6 +7,10 @@ import br.com.fiap.loja.models.dto.ClienteDTO;
 import br.com.fiap.loja.repository.ClienteRepository;
 import br.com.fiap.loja.repository.EnderecosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,12 +26,13 @@ public class ClienteService {
     @Autowired
     private EnderecosRepository enderecosRepository;
 
+    @Cacheable(value= "getClienteById", key= "#id")
     public ClienteDTO getClienteById(Long id){
         Cliente cliente = clienteRepository.getById(id);
         return modelToDTO(cliente);
     }
 
-
+    @Cacheable(value= "getAllClientes", unless= "#result.size() == 0")
     public List<ClienteDTO> getAllClientes() {
         List<Cliente> listaClientes = new ArrayList<>();
         List<ClienteDTO> clienteDTOList = new ArrayList<>();
@@ -38,10 +43,22 @@ public class ClienteService {
         return clienteDTOList;
     }
 
+
+    @Caching(
+            evict= {
+                    @CacheEvict(value= "getAllClientes", key= "#id"),
+                    @CacheEvict(value= "allClientes", allEntries= true)
+            }
+    )
     public void deleteCliente(Long id) {
         clienteRepository.deleteById(id);
     }
 
+
+    @Caching(
+            put= { @CachePut(value= "getAllClientes", key= "#clienteDTO.cpf") },
+            evict= { @CacheEvict(value= "allClientes", allEntries= true) }
+    )
     public void insertCliente(ClienteDTO clienteDTO){
         List<Enderecos> enderecosList = clienteDTO.getEnderecos();
         Cliente clienteAux = dtoToModel(clienteDTO);
@@ -50,6 +67,10 @@ public class ClienteService {
         clienteRepository.save(clienteAux);
     }
 
+    @Caching(
+            put= { @CachePut(value= "getAllClientes", key= "#clienteDTO.cpf") },
+            evict= { @CacheEvict(value= "allClientes", allEntries= true) }
+    )
     public void updateCliente(Long id, ClienteDTO clienteDTO) {
        clienteRepository.findById(id)
                 .map(c ->{
