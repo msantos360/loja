@@ -9,6 +9,6 @@ public interface ProdutoService {
     List<ProdutoDto> getAll();
     ProdutoDto getById(long id);
     ProdutoDto add(ProdutoAddOuUpdateDTO produto);
-    ProdutoDto update(ProdutoAddOuUpdateDTO produto);
+    ProdutoDto update(Long id, ProdutoAddOuUpdateDTO produto);
     void delete(long id);
 }

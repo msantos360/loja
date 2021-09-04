@@ -16,10 +16,16 @@ public class Produto {
     @Column
     private String nome;
     @Column
+    private int quantidade;
+    @Column
+    private double valor;
+    @Column
     private LocalDate dataCriacao = LocalDate.now();
 
     public Produto(ProdutoAddOuUpdateDTO produtoAddOuUpdateDTO) {
         this.nome = produtoAddOuUpdateDTO.getNome();
+        this.quantidade = produtoAddOuUpdateDTO.getQuantidade();
+        this.valor = produtoAddOuUpdateDTO.getValor();
     }
 
     public Long getId() {
@@ -45,6 +51,22 @@ public class Produto {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
