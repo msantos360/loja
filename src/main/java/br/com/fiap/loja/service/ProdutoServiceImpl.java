@@ -53,9 +53,11 @@ public class ProdutoServiceImpl implements ProdutoService {
             put= { @CachePut(value= "getAllProdutos", key= "#produtoAddOuUpdateDTO.nome") },
             evict= { @CacheEvict(value= "allProdutos", allEntries= true) }
     )
-    public ProdutoDto update(ProdutoAddOuUpdateDTO produtoAddOuUpdateDTO) {
-        Produto produto = produtoRepository.save(new Produto(produtoAddOuUpdateDTO));
-        return new ProdutoDto(produto);
+    public ProdutoDto update(Long id, ProdutoAddOuUpdateDTO produtoAddOuUpdateDTO) {
+        Produto produto = new Produto(produtoAddOuUpdateDTO);
+        produto.setId(id);
+        Produto produtoSevd = produtoRepository.save(produto);
+        return new ProdutoDto(produtoSevd);
     }
 
     @Override

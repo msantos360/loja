@@ -1,0 +1,28 @@
+version: "3.0"
+
+services: 
+    
+    db:
+        container_name: mysql-server
+        build: 
+            context: .
+            dockerfile: ./mysql-server.dockerfile
+        image: devmsantos/loja-db
+        networks: 
+            - dev-net
+        ports: 
+            - "3306:3306"
+    redis:
+        container_name: redis-db
+        build:
+            context: .
+            dockerfile: ./redis.dockerfile
+        image: devmsantos/redis-db
+        networks:
+            - dev-net
+        ports:
+            - "6379:6379"
+    
+networks:
+    dev-net:
+        driver: bridge
