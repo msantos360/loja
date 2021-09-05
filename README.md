@@ -16,6 +16,7 @@ Basta abrir o terminal na pasta do projeto, dar um docker-compose up para start 
     <li>Redis - oferece um conjunto de estruturas versáteis de dados na memória que permite a fácil criação de várias aplicações personalizadas.</li>
     <li>Registro de cache para agilizar as buscas</li>
     <li>Swagger - usado para documentação e testes para validação do retorno dos métodos</li>
+	<a href="http://localhost:8080/swagger-ui.html">Documentação Swagger aqui</a>
 	<br>
 	![print1](prints /Swagger.png)
 </p>
